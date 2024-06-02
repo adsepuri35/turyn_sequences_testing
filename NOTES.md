@@ -1,0 +1,1 @@
+The unknown variable is not random every time. Its like two pointers, where both pointers start at opposite sides and meet at the middle. Once they meet at the middle, there are still more equations to satisfy, even if there are no unknowns. So you're essentially taking the solutions you have, and plugging them in until you get a satisfied equation.

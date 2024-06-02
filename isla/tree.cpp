@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <string>
 
-int r = 5;
+int r = 9;
 
 std::vector<int> W(r);
 std::vector<int> X(r);
@@ -51,7 +51,7 @@ int main() {
         throw std::runtime_error("r must be odd");
     }
 
-    //printEquations(r);
+    printEquations(r);
     //intializeEquationVectors(r);
 
     return 0;
