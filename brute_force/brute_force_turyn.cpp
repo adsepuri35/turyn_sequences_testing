@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 // Implementation of Non-periodic autocorrelation function(NPAF) with sequence X and shift s
 int NPAF(std::vector<int>& X, int s) {
@@ -77,15 +78,26 @@ int bruteForceTurynSequences(int r) {
                         Z[j] = (i & (1 << j)) ? 1 : -1;
                     }
                     if (verifySequences(W, X, Y, Z, r)) {
-                        // std::cout << "W: ";
-                        // for (int w : W) std::cout << w << " ";
-                        // std::cout << "\nX: ";
-                        // for (int x : X) std::cout << x << " ";
-                        // std::cout << "\nY: ";
-                        // for (int y : Y) std::cout << y << " ";
-                        // std::cout << "\nZ: ";
-                        // for (int z : Z) std::cout << z << " ";
-                        // std::cout << "\n";
+                        int countOnesW = std::count(W.begin(), W.end(), 1);
+                        int countNegW = std::count(W.begin(), W.end(), -1);
+                        // std::cout << "W: " << countOnesW << " ones, " << countNegW << " minus ones.\n";
+
+                        int countOnesX = std::count(X.begin(), X.end(), 1);
+                        int countNegX = std::count(X.begin(), X.end(), -1);
+                        // std::cout << "X: " << countOnesX << " ones, " << countNegX << " minus ones.\n";
+
+                        int countOnesY = std::count(Y.begin(), Y.end(), 1);
+                        int countNegY = std::count(Y.begin(), Y.end(), -1);
+                        // std::cout << "Y: " << countOnesY << " ones, " << countNegY << " minus ones.\n";
+
+                        int countOnesZ = std::count(Z.begin(), Z.end(), 1);
+                        int countNegZ = std::count(Z.begin(), Z.end(), -1);
+                        // std::cout << "Z: " << countOnesZ << " ones, " << countNegZ << " minus ones.\n";
+
+                        int onesTotal = countOnesW + countOnesX + countOnesY + countOnesZ;
+                        int negOnesTotal = countNegW + countNegX + countNegY + countNegZ;
+                        std::cout << "Total: " << onesTotal << " ones, " << negOnesTotal << " minus ones.\n";
+
                         numSequences++;
                     }
                 }
@@ -96,7 +108,7 @@ int bruteForceTurynSequences(int r) {
 }
 
 int main() {
-    int r = 5; // odd length
+    int r = 3; // odd length
 
     std::cout << bruteForceTurynSequences(r) << std::endl;
 
